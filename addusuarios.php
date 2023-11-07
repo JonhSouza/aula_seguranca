@@ -14,13 +14,26 @@ $selectcpf = "SELECT cpf FROM usuario WHERE cpf = '$cpf'";
 $querycpf = mysqli_query($conexao, $selectcpf);
 $dadocpf = mysqli_fetch_row($querycpf);
 
-var_dump ($dadocpf);
 
 $selectlogin = "SELECT login FROM login WHERE login = '$login'";
 $querylogin = mysqli_query($conexao, $selectlogin);
 $dadologin = mysqli_fetch_row($querylogin);
 
-var_dump ($dadologin);
+if($dadocpf == NULL) && ($dadologin == NULL) {
+    $insertusuario = "INSERT INTO usuario (nome, cpf, telefone)
+    VALUES 
+    ('$nome', '$cpf', '$telefone')";
+    $queryusuario = mysqli_query($insertusuario);
+    $senhacriptografada = criptografar($senha);
+    $insertlogin = "INSERT INTO login (cpf, login, senha)
+    VALUES 
+    ('$cpf', '$login', '$senha')";
+    
+} else {
+    echo '<script>alert("CPF e/ou login já cadastrados");
+    window.locations="addusuarios.php";
+    </script>';
+}
 
 ?>
 
