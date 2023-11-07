@@ -1,6 +1,6 @@
 CREATE DATABASE seguranca_1;
 
-USE seguranca_2;
+USE seguranca_1;
 
 CREATE TABLE usuario (
 	nome VARCHAR(500),
@@ -37,6 +37,5 @@ INSERT INTO login (cpf, login, senha, nivel)
 VALUES
 ('12345678900', 'admin', 'admin', 1);
 
-// Criptografia
 UPDATE login SET senha = MD5 (senha)
 WHERE login = login;
