@@ -29,7 +29,8 @@ if ($nome <> NULL) {
         ('$nome', '$cpf', '$telefone')";
         $queryusuario = mysqli_query($conexao, $insertusuario);
         $senhacriptografada = criptografar($senha);
-        $insertlogin = "INSERT INTO login (cpf, login, senha)
+        
+        $insertlogin = "INSERT INTO login (cpf, login,  senha)
         VALUES 
         ('$cpf', '$login', '$senhacriptografada')";
         $querylogin = mysqli_query($conexao, $insertlogin);
