@@ -3,6 +3,7 @@
 session_start();
 
 include('conexao.php');
+include ('funcoes.php');
 
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : '';
@@ -19,21 +20,28 @@ $selectlogin = "SELECT login FROM login WHERE login = '$login'";
 $querylogin = mysqli_query($conexao, $selectlogin);
 $dadologin = mysqli_fetch_row($querylogin);
 
-if($dadocpf == NULL) && ($dadologin == NULL) {
-    $insertusuario = "INSERT INTO usuario (nome, cpf, telefone)
-    VALUES 
-    ('$nome', '$cpf', '$telefone')";
-    $queryusuario = mysqli_query($insertusuario);
-    $senhacriptografada = criptografar($senha);
-    $insertlogin = "INSERT INTO login (cpf, login, senha)
-    VALUES 
-    ('$cpf', '$login', '$senha')";
+if ($nome <> NULL) {
     
-} else {
-    echo '<script>alert("CPF e/ou login já cadastrados");
-    window.locations="addusuarios.php";
-    </script>';
+
+    if(($dadocpf == NULL) && ($dadologin == NULL)) {
+        $insertusuario = "INSERT INTO usuario (nome, cpf, telefone)
+        VALUES 
+        ('$nome', '$cpf', '$telefone')";
+        $queryusuario = mysqli_query($conexao, $insertusuario);
+        $senhacriptografada = criptografar($senha);
+        $insertlogin = "INSERT INTO login (cpf, login, senha)
+        VALUES 
+        ('$cpf', '$login', '$senhacriptografada')";
+        $querylogin = mysqli_query($conexao, $insertlogin);
+
+    } else {
+        echo '<script>alert("CPF e/ou login já cadastrados");
+        window.locations="addusuarios.php";
+        </script>';
+    }
 }
+
+
 
 ?>
 
