@@ -8,5 +8,4 @@ if (($_SESSION['logado'] == false) || ($_SESSION['nivel'] <> 1)) {
 }
 
 
-
 ?>
