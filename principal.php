@@ -15,7 +15,7 @@ $nivel = $_SESSION['nivel'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title></title>
 </head>
 
 <body>
@@ -23,16 +23,21 @@ $nivel = $_SESSION['nivel'];
 
         <?php
         if ($nivel < 3) { ?>
-            <a href="addusuarios.php">Adicionar usuário</a>
-        <?php } ?> <br>
+            <a href="addusuarios.php">Adicionar usuário</a><br>
+        <?php }
 
-        <?php
+
         if ($nivel == 1) { ?>
-            <a href="mudaracesso.php">Mudar acesso</a>
-        <?php } ?> <br>
-        <a href="logout.php">Sair</a>
+            <a href="mudaracesso.php">Mudar acesso</a><br>
+        <?php } ?>
+
+        <a href="alterardados.php">Alterar dados</a>
+
+        <br><a href="logout.php">Sair</a>
 
     </center>
+
+
 </body>
 
 </html>
