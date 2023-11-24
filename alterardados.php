@@ -56,6 +56,16 @@ if ($telefone <> NULL) {
                 </tr>
             </table>
         </form>
+        <h3>Alterar Senha</h3>
+        <form id="alterar-senha" action="alterarsenha.php" method="POST">
+
+            Nova senha: <br>
+            <input type="password" name="senha" required><br>
+            Confirmar senha: <br>
+            <input type="password" name="confirmarsenha" required><br>
+            <input type="submit" name="alterar" value="Alterar senha">
+        </form>
+        <br><a href="principal.php">Voltar</a>
     </center>
 </body>
 
